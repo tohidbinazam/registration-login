@@ -12,10 +12,10 @@ const authCheck = async (req, res, next) => {
             req.user = await adminModel.findById(verify.id)
             next()
         }catch(error){
-            res.status(200).json(error.message)
+            res.status(401).json(error.message)
         }
     } else {
-        res.status(200).json('Token missing')
+        res.status(401).json('Token missing')
     }
 
 }
